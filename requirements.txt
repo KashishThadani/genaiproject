@@ -1,0 +1,11 @@
+streamlit>=1.36.0
+pillow>=10.3.0
+# Optional image generation (GPU recommended). Comment out these if deploying without images.
+diffusers>=0.30.0
+transformers>=4.42.0
+accelerate>=0.33.0
+safetensors>=0.4.3
+# Torch: choose build per platform; Streamlit Cloud often fails on torch. For local GPU (Windows/Linux):
+# pip install --index-url https://download.pytorch.org/whl/cu121 torch torchvision torchaudio
+# For CPU-only:
+# pip install torch --index-url https://download.pytorch.org/whl/cpu
