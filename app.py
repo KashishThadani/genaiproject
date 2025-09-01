@@ -1,30 +1,3 @@
-# app.py
-# AI-driven Game Character Design Generator (Streamlit)
-#
-# Features:
-# - Procedural character generator (genre, species/class, traits, stats, backstory)
-# - Prompt builder for image tools (Stable Diffusion / Midjourney / DALL·E, etc.)
-# - Optional local image generation via HuggingFace diffusers (Stable Diffusion)
-# - Export: JSON, prompt, and PNG concept card
-# - Designed to run locally or on Streamlit Community Cloud (image gen can be disabled)
-#
-# Run locally:
-#   pip install -r requirements.txt
-#   streamlit run app.py
-#
-# Streamlit Cloud deploy:
-#   1) Push app.py and requirements.txt to a Git repo
-#   2) Deploy on share.streamlit.io
-#   3) In "Settings → Secrets", add HF_TOKEN (optional) if you switch to an Inference API
-#      or private model. For local diffusers, no token is required for public models.
-#
-# Notes:
-# - Image generation is optional and off by default. Turn it on via the sidebar.
-# - If diffusers/torch aren't available (e.g., Streamlit Cloud), the app gracefully skips images.
-# - You can still export prompts and JSON, and use external tools for art.
-#
-# (c) 2025 – MIT License
-
 import io
 import os
 import json
@@ -32,6 +5,7 @@ import math
 import random
 from dataclasses import dataclass, asdict
 from typing import List, Dict, Any, Optional
+import datetime
 
 import streamlit as st
 from PIL import Image, ImageDraw, ImageFont
@@ -40,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 # ----------------------------- Utilities -----------------------------
 
 APP_TITLE = "AI Game Character Designer"
-VERSION = "1.0.0"
+VERSION = "1.0"
 
 def seeded_rng(seed: Optional[int] = None) -> random.Random:
     r = random.Random()
